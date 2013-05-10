@@ -1,13 +1,12 @@
 //
 //  ViewController.h
-//  decktest
+//  ViewDeckExample
 //
-//  Created by Dan Fellmeth on 5/10/13.
-//  Copyright (c) 2013 Test. All rights reserved.
-//
+
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UITableViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
+@property (nonatomic, retain) UIPopoverController* popoverController;
 @end

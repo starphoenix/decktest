@@ -1,9 +1,6 @@
 //
 //  main.m
-//  decktest
-//
-//  Created by Dan Fellmeth on 5/10/13.
-//  Copyright (c) 2013 Test. All rights reserved.
+//  ViewDeckExample
 //
 
 #import <UIKit/UIKit.h>
@@ -12,7 +9,14 @@
 
 int main(int argc, char *argv[])
 {
-	@autoreleasepool {
-	    return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
-	}
+#if __has_feature(objc_arc) && __clang_major__ >= 3
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    }
+#else
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    int retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    [pool release];
+    return retVal;
+#endif // __has_feature(objc_arc)
 }
